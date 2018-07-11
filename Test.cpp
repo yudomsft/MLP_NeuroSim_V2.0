@@ -75,11 +75,11 @@ extern int correct;		// # of correct prediction
 /* Validation */
 void Validate() {
 	int numBatchReadSynapse;    // # of read synapses in a batch read operation (decide later)
-	double* outN1 = new double[param->nHide]; // Net input to the hidden layer [param->nHide]
-	double* a1 = new double[param->nHide];    // Net output of hidden layer [param->nHide] also the input of hidden layer to output layer
-	int* da1 = new int[param->nHide];  // Digitized net output of hidden layer [param->nHide] also the input of hidden layer to output layer
-	double* outN2 = new double[param->nOutput];   // Net input to the output layer [param->nOutput]
-	double* a2 = new double[param->nOutput];  // Net output of output layer [param->nOutput]
+	std::vector<double> outN1(param->nHide); // Net input to the hidden layer [param->nHide]
+	std::vector<double> a1(param->nHide);    // Net output of hidden layer [param->nHide] also the input of hidden layer to output layer
+	std::vector<int> da1(param->nHide);  // Digitized net output of hidden layer [param->nHide] also the input of hidden layer to output layer
+	std::vector<double> outN2(param->nOutput);   // Net input to the output layer [param->nOutput]
+	std::vector<double> a2(param->nOutput);  // Net output of output layer [param->nOutput]
 	double tempMax;
 	int countNum;
 	correct = 0;
@@ -99,8 +99,8 @@ void Validate() {
 	{
 		// Forward propagation
 		/* First layer from input layer to the hidden layer */
-		std::fill_n(outN1, param->nHide, 0);
-		std::fill_n(a1, param->nHide, 0);
+		std::fill_n(outN1.begin(), param->nHide, 0);
+		std::fill_n(a1.begin(), param->nHide, 0);
 		if (param->useHardwareInTestingFF) {    // Hardware
 			for (int j=0; j<param->nHide; j++) {
 				if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayIH->cell[0][0])) {  // Analog eNVM
@@ -184,8 +184,8 @@ void Validate() {
 		/* Second layer from hidden layer to the output layer */
 		tempMax = 0;
 		countNum = 0;
-		std::fill_n(outN2, param->nOutput, 0);
-		std::fill_n(a2, param->nOutput, 0);
+		std::fill_n(outN2.begin(), param->nOutput, 0);
+		std::fill_n(a2.begin(), param->nOutput, 0);
 		if (param->useHardwareInTestingFF) {  // Hardware
 			for (int j=0; j<param->nOutput; j++) {
 				if (AnalogNVM *temp = dynamic_cast<AnalogNVM*>(arrayHO->cell[0][0])) {  // Analog eNVM
