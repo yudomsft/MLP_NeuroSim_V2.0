@@ -195,8 +195,6 @@ void DecoderDriver::CalculateLatency(double _rampInput, double _capLoad1, double
 		rampInput = _rampInput;
 		double capOutput;
 		double tr;	/* time constant */
-		double gm;	/* transconductance */
-		double beta;	/* for horowitz calculation */
 		
 		// TG
 		capOutput = capTgDrain * 2;

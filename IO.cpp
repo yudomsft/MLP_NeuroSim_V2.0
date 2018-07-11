@@ -55,7 +55,7 @@ extern std::vector< std::vector<double> > testOutput;
 extern std::vector< std::vector<double> > weight1;
 extern std::vector< std::vector<double> > weight2;
 
-/* Read trainging data from file */
+/* Read training data from file */
 void ReadTrainingDataFromFile(const char *trainPatchFileName, const char *trainLabelFileName) {
 	FILE *fp_patch = fopen(trainPatchFileName, "r");
 	FILE *fp_label = fopen(trainLabelFileName, "r");
@@ -71,7 +71,7 @@ void ReadTrainingDataFromFile(const char *trainPatchFileName, const char *trainL
 
 	int i = 0;
 	int j = 0;
-	while (fscanf(fp_patch, "%lf", &Input[i][j]) != EOF){
+	while (j < Input[i].size() && fscanf(fp_patch, "%lf", &Input[i][j]) != EOF){
 		Input[i][j] = truncate(Input[i][j], param->numInputLevel - 1, param->BWthreshold);
 		dInput[i][j] = round(Input[i][j] * (param->numInputLevel - 1));
 		i += 1;
@@ -108,7 +108,7 @@ void ReadTestingDataFromFile(const char *testPatchFileName, const char *testLabe
 
 	int i = 0;
 	int j = 0;
-	while (fscanf(fp_patch, "%lf", &testInput[i][j]) != EOF){
+	while (j < testInput[i].size() && fscanf(fp_patch, "%lf", &testInput[i][j]) != EOF){
 		testInput[i][j] = truncate(testInput[i][j], param->numInputLevel - 1, param->BWthreshold);
 		dTestInput[i][j] = round(testInput[i][j] * (param->numInputLevel - 1));
 		i += 1;

@@ -120,7 +120,6 @@ void Precharger::CalculateLatency(double _rampInput, double _capLoad, double num
 
 		rampInput = _rampInput;
 		capLoad = _capLoad;
-		double tr;		/* time constant */
 		double gm;		/* transconductance */
 		double beta;	/* for horowitz calculation */
 		double resPullUp;

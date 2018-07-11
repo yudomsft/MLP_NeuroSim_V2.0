@@ -152,11 +152,7 @@ void Mux::CalculateLatency(double _rampInput, double _capLoad, double numRead) {
 	} else {
 		rampInput = _rampInput;
 		capLoad = _capLoad;
-		double resPullDown;
 		double tr;  	/* time constant */
-		double gm;  	/* transconductance */
-		double beta;    /* for horowitz calculation */
-		double rampNandOutput;
 		readLatency = 0;
 
 		// TG

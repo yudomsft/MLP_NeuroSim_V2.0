@@ -75,11 +75,11 @@ extern int correct;		// # of correct prediction
 /* Validation */
 void Validate() {
 	int numBatchReadSynapse;    // # of read synapses in a batch read operation (decide later)
-	double outN1[param->nHide]; // Net input to the hidden layer [param->nHide]
-	double a1[param->nHide];    // Net output of hidden layer [param->nHide] also the input of hidden layer to output layer
-	int da1[param->nHide];  // Digitized net output of hidden layer [param->nHide] also the input of hidden layer to output layer
-	double outN2[param->nOutput];   // Net input to the output layer [param->nOutput]
-	double a2[param->nOutput];  // Net output of output layer [param->nOutput]
+	double* outN1 = new double[param->nHide]; // Net input to the hidden layer [param->nHide]
+	double* a1 = new double[param->nHide];    // Net output of hidden layer [param->nHide] also the input of hidden layer to output layer
+	int* da1 = new int[param->nHide];  // Digitized net output of hidden layer [param->nHide] also the input of hidden layer to output layer
+	double* outN2 = new double[param->nOutput];   // Net input to the output layer [param->nOutput]
+	double* a2 = new double[param->nOutput];  // Net output of output layer [param->nOutput]
 	double tempMax;
 	int countNum;
 	correct = 0;

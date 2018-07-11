@@ -75,14 +75,14 @@ extern DFF dffHO;
 void Train(const int numTrain, const int epochs) {
 	int numBatchReadSynapse;	// # of read synapses in a batch read operation (decide later)
 	int numBatchWriteSynapse;	// # of write synapses in a batch write operation (decide later)
-	double outN1[param->nHide]; // Net input to the hidden layer [param->nHide]
-	double a1[param->nHide];    // Net output of hidden layer [param->nHide] also the input of hidden layer to output layer
-	int da1[param->nHide];  // Digitized net output of hidden layer [param->nHide] also the input of hidden layer to output layer
-	double outN2[param->nOutput];   // Net input to the output layer [param->nOutput]
-	double a2[param->nOutput];  // Net output of output layer [param->nOutput]
+	double* outN1 = new double[param->nHide]; // Net input to the hidden layer [param->nHide]
+	double* a1 = new double[param->nHide];    // Net output of hidden layer [param->nHide] also the input of hidden layer to output layer
+	int* da1 = new int[param->nHide];  // Digitized net output of hidden layer [param->nHide] also the input of hidden layer to output layer
+	double* outN2 = new double[param->nOutput];   // Net input to the output layer [param->nOutput]
+	double* a2 = new double[param->nOutput];  // Net output of output layer [param->nOutput]
 
-	double s1[param->nHide];    // Output delta from input layer to the hidden layer [param->nHide]
-	double s2[param->nOutput];  // Output delta from hidden layer to the output layer [param->nOutput]
+	double* s1 = new double[param->nHide];    // Output delta from input layer to the hidden layer [param->nHide]
+	double* s2 = new double[param->nOutput];  // Output delta from hidden layer to the output layer [param->nOutput]
 	
 	for (int t = 0; t < epochs; t++) {
 		for (int batchSize = 0; batchSize < numTrain; batchSize++) {

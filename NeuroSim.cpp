@@ -637,6 +637,8 @@ double NeuroSimSubArrayLeakagePower(SubArray *subArray) {
 			}
 		}
 	}
+
+	return subArray->leakage;
 }
 
 void NeuroSimNeuronInitialize(SubArray *& subArray, InputParameter& inputParameter, Technology& tech, MemCell& cell, Adder& adder, Mux& mux, RowDecoder& muxDecoder, DFF& dff) {

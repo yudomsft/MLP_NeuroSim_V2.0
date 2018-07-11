@@ -185,8 +185,8 @@ IdealDevice::IdealDevice(int x, int y) {
 	
 	/* Conductance range variation */	
 	conductanceRangeVar = false;	// Consider variation of conductance range or not
-	maxConductanceVar = 0;	// Sigma of maxConductance variation (S)
-	minConductanceVar = 0;	// Sigma of minConductance variation (S)
+	maxConductanceVar = 0.1;	// Sigma of maxConductance variation (S)
+	minConductanceVar = 0.1;	// Sigma of minConductance variation (S)
 	std::mt19937 localGen;
 	localGen.seed(std::time(0));
 	gaussian_dist_maxConductance = new std::normal_distribution<double>(0, maxConductanceVar);
@@ -293,7 +293,7 @@ RealDevice::RealDevice(int x, int y) {
 		writeVoltageSquareSum = 0;	// Sum of V^2 of non-identical pulses (dynamic variable)
 	}
 	readNoise = false;		// Consider read noise or not
-	sigmaReadNoise = 0;		// Sigma of read noise in gaussian distribution
+	sigmaReadNoise = 0.1;		// Sigma of read noise in gaussian distribution
 	gaussian_dist = new std::normal_distribution<double>(0, sigmaReadNoise);	// Set up mean and stddev for read noise
 
 	std::mt19937 localGen;	// It's OK not to use the external gen, since here the device-to-device vairation is a one-time deal
@@ -302,7 +302,7 @@ RealDevice::RealDevice(int x, int y) {
 	/* Device-to-device weight update variation */
 	NL_LTP = 2.4;	// LTP nonlinearity
 	NL_LTD = -4.88;	// LTD nonlinearity
-	sigmaDtoD = 0;	// Sigma of device-to-device weight update vairation in gaussian distribution
+	sigmaDtoD = 0.1;	// Sigma of device-to-device weight update vairation in gaussian distribution
 	gaussian_dist2 = new std::normal_distribution<double>(0, sigmaDtoD);	// Set up mean and stddev for device-to-device weight update vairation
 	paramALTP = getParamA(NL_LTP + (*gaussian_dist2)(localGen)) * maxNumLevelLTP;	// Parameter A for LTP nonlinearity
 	paramALTD = getParamA(NL_LTD + (*gaussian_dist2)(localGen)) * maxNumLevelLTD;	// Parameter A for LTD nonlinearity
@@ -313,8 +313,8 @@ RealDevice::RealDevice(int x, int y) {
 
 	/* Conductance range variation */
 	conductanceRangeVar = false;    // Consider variation of conductance range or not
-	maxConductanceVar = 0;  // Sigma of maxConductance variation (S)
-	minConductanceVar = 0;  // Sigma of minConductance variation (S)
+	maxConductanceVar = 0.1;  // Sigma of maxConductance variation (S)
+	minConductanceVar = 0.1;  // Sigma of minConductance variation (S)
 	gaussian_dist_maxConductance = new std::normal_distribution<double>(0, maxConductanceVar);
 	gaussian_dist_minConductance = new std::normal_distribution<double>(0, minConductanceVar);
 	if (conductanceRangeVar) {
@@ -651,8 +651,8 @@ DigitalNVM::DigitalNVM(int x, int y) {
 
 	/* Conductance range variation */
 	conductanceRangeVar = false;    // Consider variation of conductance range or not
-	maxConductanceVar = 0;  // Sigma of maxConductance variation (S)
-	minConductanceVar = 0;  // Sigma of minConductance variation (S)
+	maxConductanceVar = 0.1;  // Sigma of maxConductance variation (S)
+	minConductanceVar = 0.1;  // Sigma of minConductance variation (S)
 	std::mt19937 localGen;
 	localGen.seed(std::time(0));
 	gaussian_dist_maxConductance = new std::normal_distribution<double>(0, maxConductanceVar);

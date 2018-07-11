@@ -87,8 +87,6 @@ void ShiftAdd::CalculateArea(double _newHeight, double _newWidth, AreaModify _op
 	if (!initialized) {
 		cout << "[ShiftAdd] Error: Require initialization first!" << endl;
 	} else {
-		double hInv, wInv, hNand, wNand;
-		
 		// Adder
 		if (_newWidth && _option==NONE) {
 			if (spikingMode == NONSPIKING) {   // NONSPIKING: binary format

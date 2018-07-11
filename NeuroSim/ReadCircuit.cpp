@@ -117,7 +117,7 @@ void ReadCircuit::CalculateUnitArea() {
 		cout << "[ReadCircuit] Error: Require initialization first!" << endl;
 	} else {
 		
-		double hTg, wTg, h1, w1, h2, w2, h3, w3, h4, w4, h5, w5, h6, w6, h7, w7, h8, w8, hBufInv, wBufInv;
+		double hTg = 0, h4 = 0, hBufInv = 0, wBufInv = 0;
 		// Read circuit body
 		if (mode == CMOS) {
 			// Analytical estimation
